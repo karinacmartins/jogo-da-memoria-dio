@@ -1,0 +1,146 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fc1e8a;
+    user-select: none;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: linear-gradient(325deg, #03001e 0%, #7303c0 30%, #ec38bc 70%, #fdeff9 100%);
+    padding: 40px 60px;
+}
+
+h2 {
+    font-size: 3em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.start {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+}
+
+#timer {
+    padding: 5px;
+    color: #ec38bc;
+    background-color: #262809;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.reset {
+    padding: 15px 20px;
+    width: 100%;
+    color: #000;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.reset:focus {
+    color: #ec38bc;
+    background-color: #262809;
+}
+
+.game {
+
+    width: 430px;
+    height: 430px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    transform-style: preserve-3d;
+    perspective: 500px;
+}
+
+.item {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+
+}
+
+.item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #404040;
+    transition: 0.25s;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.item.boxOpen {
+    transform: rotateY(0deg);
+
+}
+
+.boxOpen::after {
+    transform: rotateY(180deg);
+}
+
+@media (max-width: 600px) {
+    .game {
+        width: 95vw; /* Largura quase total da tela em dispositivos pequenos */
+        gap: 5px; /* Menor espaço entre os itens */
+    }
+
+    .item {
+        font-size: 2.5em; /* Reduz o tamanho do emoji nas cartas */
+    }
+
+    .reset {
+        font-size: 1em; /* Reduz o tamanho do texto do botão */
+        padding: 10px; /* Ajusta o padding do botão */
+    }
+
+    #timer {
+        font-size: 1.2em; /* Reduz o tamanho do texto do timer */
+    }
+}
+@media (max-width: 400px) {
+    .game {
+        width: 90vw; /* Largura quase total da tela em dispositivos móveis */
+        gap: 5px; /* Menor espaço entre os itens */
+    }
+
+    .item {
+        width: 80px; /* Reduz a largura das cartas para caber melhor na tela */
+        height: 80px; /* Reduz a altura das cartas */
+        font-size: 2em; /* Reduz o tamanho do emoji nas cartas */
+    }
+
+    .reset {
+        font-size: 1.2em; /* Ajusta o tamanho do texto do botão */
+        padding: 10px; /* Ajusta o padding do botão */
+    }
+
+    #timer {
+        font-size: 1.5em; /* Reduz o tamanho do texto do timer */
+    }
+}
+
